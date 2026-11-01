@@ -134,6 +134,7 @@ section{padding:90px 0;border-top:1px solid var(--line)}
 .proj a.side{color:var(--brand);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
 .proj a.side:hover{border-color:var(--brand)}
 .proj span.side{color:var(--muted)}
+.proj .links{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
 
 /* ---------- Trajetória ---------- */
 .t-row{display:grid;grid-template-columns:110px 1fr;gap:20px;padding:24px 0;border-top:1px solid var(--line)}
@@ -201,6 +202,7 @@ footer b{color:var(--ink)}
   .stack-grid,.courses ul{grid-template-columns:1fr}
   .proj{grid-template-columns:1fr;gap:8px}
   .proj .side{justify-self:start}
+  .proj .links{justify-self:start;align-items:flex-start}
   .t-row{grid-template-columns:1fr;gap:6px}
   .cert-row{grid-template-columns:1fr;gap:6px}
   section{padding:70px 0}
@@ -400,6 +402,19 @@ footer b{color:var(--ink)}
     </div>
     <a class="side" href="https://github.com/fab-data/projeto_pipeline_weather" target="_blank" rel="noopener noreferrer"><span data-i18n="p.link3">Ver no GitHub</span><span aria-hidden="true"> ↗</span><span class="sr-only" data-i18n="a11y.newtab">(abre em nova aba)</span></a>
   </article>
+
+  <article class="proj reveal d3">
+    <span class="idx">07</span>
+    <div>
+      <h3 data-i18n="p7.title">Data Warehouse Climático com dbt</h3>
+      <p data-i18n="p7.desc">Histórico horário do Open-Meteo em JSONB no PostgreSQL, transformado com dbt em star schema — staging, intermediate e marts — e servido a um dashboard Power BI com visão geral, perfil horário e chuva.</p>
+      <div class="tags-line">Open-Meteo · PostgreSQL · dbt · Airflow · Power BI</div>
+    </div>
+    <div class="links">
+      <a class="side" href="https://app.powerbi.com/view?r=eyJrIjoiYjM0NjM1NDMtNzVlMS00Mjk0LWFhZmUtNWY3NzE5YjhkOWQxIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" target="_blank" rel="noopener noreferrer"><span data-i18n="p7.link">Ver dashboard</span><span aria-hidden="true"> ↗</span><span class="sr-only" data-i18n="a11y.newtab">(abre em nova aba)</span></a>
+      <a class="side" href="https://github.com/fab-data/projeto_weather_completo" target="_blank" rel="noopener noreferrer"><span data-i18n="p.link3">Ver no GitHub</span><span aria-hidden="true"> ↗</span><span class="sr-only" data-i18n="a11y.newtab">(abre em nova aba)</span></a>
+    </div>
+  </article>
 </section>
 
 <!-- ============ 05 TRAJETÓRIA ============ -->
@@ -523,6 +538,7 @@ const i18n = {
     "p4.title":"Transcrição Inteligente de Reuniões","p4.desc":"Solução que transforma áudio e vídeo de reuniões em documentação estruturada, atas e resumos — do arquivo bruto ao documento final.","p4.tag1":"IA de áudio","p4.tag2":"Automação",
     "p5.title":"Lakehouse de Perfumes","p5.desc":"Pipeline completo de Engenharia → Ciência de Dados → App no Databricks, 100% como código com Databricks Asset Bundles (DABs).",
     "p6.title":"Pipeline de Dados Climáticos","p6.desc":"Coleta, transformação e carga de dados climáticos da OpenWeather API com Python, Apache Airflow, Docker e PostgreSQL.",
+    "p7.title":"Data Warehouse Climático com dbt","p7.desc":"Histórico horário do Open-Meteo em JSONB no PostgreSQL, transformado com dbt em star schema — staging, intermediate e marts — e servido a um dashboard Power BI com visão geral, perfil horário e chuva.","p7.link":"Ver dashboard",
     "p.link":"Ver relatório","p.link2":"Ver relatório","p.link3":"Ver no GitHub","a11y.newtab":"(abre em nova aba)",
     "tl.label":"05 — Trajetória","tl.title":"Da contabilidade aos dados","tl.desc":"Cada etapa adicionou uma camada: negócio, análise, engenharia, automação.",
     "t1.p":"Início como Data Analyst | BI Specialist: dashboards, ETL e automações para pesquisas de mercado e viabilidade em 6 segmentos.",
@@ -570,6 +586,7 @@ const i18n = {
     "p4.title":"Smart Meeting Transcription","p4.desc":"Solution that turns meeting audio and video into structured documentation, minutes and summaries — from raw file to final document.","p4.tag1":"Audio AI","p4.tag2":"Automation",
     "p5.title":"Perfume Retail Lakehouse","p5.desc":"End-to-end Engineering → Data Science → App pipeline on Databricks, 100% as code with Databricks Asset Bundles (DABs).",
     "p6.title":"Weather Data Pipeline","p6.desc":"Collection, transformation and loading of weather data from the OpenWeather API with Python, Apache Airflow, Docker and PostgreSQL.",
+    "p7.title":"Weather Data Warehouse with dbt","p7.desc":"Hourly Open-Meteo history stored as JSONB in PostgreSQL, transformed with dbt into a star schema — staging, intermediate and marts — and served to a Power BI dashboard covering overview, hourly profile and rainfall.","p7.link":"View dashboard",
     "p.link":"View report","p.link2":"View report","p.link3":"View on GitHub","a11y.newtab":"(opens in a new tab)",
     "tl.label":"05 — Journey","tl.title":"From accounting to data","tl.desc":"Each step added a layer: business, analytics, engineering, automation.",
     "t1.p":"Started as Data Analyst | BI Specialist: dashboards, ETL and automation for market research and viability studies across 6 industries.",
