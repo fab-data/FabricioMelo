@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fabricio de Souza Melo — Data Analyst | BI Specialist</title>
-<meta name="description" content="Fabricio de Souza Melo — Data Analyst & BI Specialist com 5+ anos de experiência. Power BI, Microsoft Fabric, SQL, Python e automação. Certificado PL-300 e DP-600. Goiânia, GO.">
+<meta name="description" content="Fabricio de Souza Melo — Data Analyst & BI Specialist em Goiânia. Power BI, Microsoft Fabric, SQL, Python, dbt e automação. Certificado PL-300 e DP-600.">
 <meta property="og:title" content="Fabricio de Souza Melo — Data Analyst | BI Specialist">
 <meta property="og:description" content="Transformo dados em indicadores estratégicos e processos manuais em fluxos automatizados.">
 <meta property="og:type" content="website">
@@ -14,11 +14,14 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Fabricio de Souza Melo — Data Analyst &amp; BI Specialist">
 <meta property="og:site_name" content="Fabricio de Souza Melo — Portfolio">
+<meta property="og:locale" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Fabricio de Souza Melo — Data Analyst | BI Specialist">
 <meta name="twitter:description" content="Transformo dados em indicadores estratégicos e processos manuais em fluxos automatizados.">
 <meta name="twitter:image" content="https://fab-data.github.io/FabricioMelo/og-image.png">
 <meta name="theme-color" content="#003B6A">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="canonical" href="https://fab-data.github.io/FabricioMelo/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -136,6 +139,15 @@ section{padding:90px 0;border-top:1px solid var(--line)}
 .proj span.side{color:var(--muted)}
 .proj .links{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
 
+/* ---------- Outros projetos ---------- */
+.others{margin-top:34px;padding-top:22px;border-top:1px solid var(--line)}
+.others-label{font-family:var(--mono);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.others-list{list-style:none}
+.others-list li{padding:18px 0;border-bottom:1px solid var(--line)}
+.others-list h4{font-family:var(--serif);font-weight:500;font-size:1.05rem;margin-bottom:4px}
+.others-list p{font-size:.88rem;color:var(--muted);max-width:640px}
+.others-list .tags-line{font-family:var(--mono);font-size:.68rem;color:var(--muted);margin-top:8px;letter-spacing:.3px}
+
 /* ---------- Trajetória ---------- */
 .t-row{display:grid;grid-template-columns:110px 1fr;gap:20px;padding:24px 0;border-top:1px solid var(--line)}
 .t-row:last-child{border-bottom:1px solid var(--line)}
@@ -153,7 +165,7 @@ section{padding:90px 0;border-top:1px solid var(--line)}
 .courses h4{font-family:var(--mono);font-size:.74rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
 .courses ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 40px;border-top:1px solid var(--line)}
 .courses li{font-size:.86rem;color:var(--muted);padding:12px 0;border-bottom:1px solid var(--line)}
-.courses li i{color:#9AA1A8}
+.courses li i{color:#66707A}
 
 /* ---------- Contato ---------- */
 .contact{padding:110px 0}
@@ -196,8 +208,8 @@ footer b{color:var(--ink)}
   .meta-cell:nth-child(n+3){border-top:1px solid var(--line)}
 }
 @media (max-width:680px){
-  .nav-links{position:fixed;inset:61px 0 auto 0;flex-direction:column;align-items:flex-start;background:var(--paper);padding:26px 24px;gap:18px;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .35s}
-  .nav-links.open{transform:translateY(0)}
+  .nav-links{position:fixed;inset:61px 0 auto 0;flex-direction:column;align-items:flex-start;background:var(--paper);padding:26px 24px;gap:18px;border-bottom:1px solid var(--line);transform:translateY(-130%);visibility:hidden;transition:transform .35s,visibility .35s}
+  .nav-links.open{transform:translateY(0);visibility:visible}
   .hamb{display:block}
   .stack-grid,.courses ul{grid-template-columns:1fr}
   .proj{grid-template-columns:1fr;gap:8px}
@@ -233,10 +245,10 @@ footer b{color:var(--ink)}
     </ul>
     <div class="nav-right">
       <div class="lang-toggle" role="group" aria-label="Idioma / Language">
-        <button class="lang-btn active" data-lang="pt">PT</button>
-        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn active" data-lang="pt" aria-pressed="true">PT</button>
+        <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
       </div>
-      <button class="hamb" id="hamb" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+      <button class="hamb" id="hamb" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
@@ -368,24 +380,6 @@ footer b{color:var(--ink)}
   <article class="proj reveal d2">
     <span class="idx">03</span>
     <div>
-      <h3 data-i18n="p3.title">Automação Conversacional</h3>
-      <p data-i18n="p3.desc">Agente de IA para atendimento e agendamento no WhatsApp, integrado a ferramentas de negócio — orquestrado em n8n com APIs e webhooks.</p>
-      <div class="tags-line">n8n · Evolution API · LLM · Webhooks</div>
-    </div>
-  </article>
-
-  <article class="proj reveal d2">
-    <span class="idx">04</span>
-    <div>
-      <h3 data-i18n="p4.title">Transcrição Inteligente de Reuniões</h3>
-      <p data-i18n="p4.desc">Solução que transforma áudio e vídeo de reuniões em documentação estruturada, atas e resumos — do arquivo bruto ao documento final.</p>
-      <div class="tags-line">Python · <span data-i18n="p4.tag1">IA de áudio</span> · <span data-i18n="p4.tag2">Automação</span></div>
-    </div>
-  </article>
-
-  <article class="proj reveal d3">
-    <span class="idx">05</span>
-    <div>
       <h3 data-i18n="p5.title">Lakehouse de Perfumes</h3>
       <p data-i18n="p5.desc">Pipeline completo de Engenharia → Ciência de Dados → App no Databricks, 100% como código com Databricks Asset Bundles (DABs).</p>
       <div class="tags-line">Databricks · PySpark · Delta Lake · DABs · Lakehouse</div>
@@ -393,8 +387,8 @@ footer b{color:var(--ink)}
     <a class="side" href="https://github.com/fab-data/LakehousePerfumes" target="_blank" rel="noopener noreferrer"><span data-i18n="p.link3">Ver no GitHub</span><span aria-hidden="true"> ↗</span><span class="sr-only" data-i18n="a11y.newtab">(abre em nova aba)</span></a>
   </article>
 
-  <article class="proj reveal d3">
-    <span class="idx">06</span>
+  <article class="proj reveal d2">
+    <span class="idx">04</span>
     <div>
       <h3 data-i18n="p6.title">Pipeline de Dados Climáticos</h3>
       <p data-i18n="p6.desc">Coleta, transformação e carga de dados climáticos da OpenWeather API com Python, Apache Airflow, Docker e PostgreSQL.</p>
@@ -404,7 +398,7 @@ footer b{color:var(--ink)}
   </article>
 
   <article class="proj reveal d3">
-    <span class="idx">07</span>
+    <span class="idx">05</span>
     <div>
       <h3 data-i18n="p7.title">Data Warehouse Climático com dbt</h3>
       <p data-i18n="p7.desc">Histórico horário do Open-Meteo em JSONB no PostgreSQL, transformado com dbt em star schema — staging, intermediate e marts — e servido a um dashboard Power BI com visão geral, perfil horário e chuva.</p>
@@ -415,6 +409,22 @@ footer b{color:var(--ink)}
       <a class="side" href="https://github.com/fab-data/projeto_weather_completo" target="_blank" rel="noopener noreferrer"><span data-i18n="p.link3">Ver no GitHub</span><span aria-hidden="true"> ↗</span><span class="sr-only" data-i18n="a11y.newtab">(abre em nova aba)</span></a>
     </div>
   </article>
+
+  <div class="others reveal d3">
+    <h3 class="others-label" data-i18n="projects.others">Outros projetos</h3>
+    <ul class="others-list">
+      <li>
+        <h4 data-i18n="p3.title">Automação Conversacional</h4>
+        <p data-i18n="p3.desc">Agente de IA para atendimento e agendamento no WhatsApp, integrado a ferramentas de negócio — orquestrado em n8n com APIs e webhooks.</p>
+        <div class="tags-line">n8n · Evolution API · LLM · Webhooks</div>
+      </li>
+      <li>
+        <h4 data-i18n="p4.title">Transcrição Inteligente de Reuniões</h4>
+        <p data-i18n="p4.desc">Solução que transforma áudio e vídeo de reuniões em documentação estruturada, atas e resumos — do arquivo bruto ao documento final.</p>
+        <div class="tags-line">Python · <span data-i18n="p4.tag1">IA de áudio</span> · <span data-i18n="p4.tag2">Automação</span></div>
+      </li>
+    </ul>
+  </div>
 </section>
 
 <!-- ============ 05 TRAJETÓRIA ============ -->
@@ -473,18 +483,18 @@ footer b{color:var(--ink)}
     <a href="mailto:fabriciosm.pessoal@gmail.com">
       <span class="cl-label">E-mail<span class="cl-badge" data-i18n="contact.pref">preferencial</span></span>
       <span class="cl-value">fabriciosm.pessoal@gmail.com</span>
-      <span class="arr">↗</span>
+      <span class="arr" aria-hidden="true">↗</span>
     </a>
     <a href="https://www.linkedin.com/in/fabriciosmelo/" target="_blank" rel="noopener noreferrer">
       <span class="cl-label">LinkedIn</span>
       <span class="cl-value">Fabricio Melo</span>
-      <span class="arr">↗</span>
+      <span class="arr" aria-hidden="true">↗</span>
       <span class="sr-only" data-i18n="a11y.newtab">(abre em nova aba)</span>
     </a>
     <a href="https://github.com/fab-data" target="_blank" rel="noopener noreferrer">
       <span class="cl-label">GitHub</span>
       <span class="cl-value">fab-data</span>
-      <span class="arr">↗</span>
+      <span class="arr" aria-hidden="true">↗</span>
       <span class="sr-only" data-i18n="a11y.newtab">(abre em nova aba)</span>
     </a>
   </div>
@@ -529,7 +539,7 @@ const i18n = {
     "s1.title":"BI &amp; Visualização","s1.desc":"Dashboards e modelos semânticos que respondem, não só enfeitam.","s1.i4":"Modelagem Semântica",
     "s2.title":"Dados &amp; Engenharia","s2.desc":"ETL e arquitetura moderna, do lakehouse ao data warehouse.","s2.i7":"Linguagem M",
     "s3.title":"Automação","s3.desc":"Fluxos que eliminam tarefas manuais e conectam ferramentas.",
-    "projects.label":"04 — Projetos","projects.title":"Trabalhos selecionados","projects.desc":"Estudos e soluções reais — de dashboards públicos a automações em produção.",
+    "projects.label":"04 — Projetos","projects.title":"Trabalhos selecionados","projects.desc":"Estudos e soluções reais — de dashboards públicos a automações em produção.","projects.others":"Outros projetos",
     "p1.title":"Painel da Câmara dos Deputados",
     "p1.desc":"Análise visual de dados abertos da Câmara: gastos, presença e atuação parlamentar, com indicadores e storytelling para facilitar a interpretação executiva.",
     "p2.title":"Brasileirão 2025",
@@ -539,7 +549,7 @@ const i18n = {
     "p5.title":"Lakehouse de Perfumes","p5.desc":"Pipeline completo de Engenharia → Ciência de Dados → App no Databricks, 100% como código com Databricks Asset Bundles (DABs).",
     "p6.title":"Pipeline de Dados Climáticos","p6.desc":"Coleta, transformação e carga de dados climáticos da OpenWeather API com Python, Apache Airflow, Docker e PostgreSQL.",
     "p7.title":"Data Warehouse Climático com dbt","p7.desc":"Histórico horário do Open-Meteo em JSONB no PostgreSQL, transformado com dbt em star schema — staging, intermediate e marts — e servido a um dashboard Power BI com visão geral, perfil horário e chuva.","p7.link":"Ver dashboard",
-    "p.link":"Ver relatório","p.link2":"Ver relatório","p.link3":"Ver no GitHub","a11y.newtab":"(abre em nova aba)",
+    "p.link":"Ver relatório","p.link2":"Ver relatório","p.link3":"Ver no GitHub","a11y.newtab":"(abre em nova aba)","a11y.menu":"Abrir menu","a11y.close":"Fechar menu","a11y.top":"Voltar ao topo",
     "tl.label":"05 — Trajetória","tl.title":"Da contabilidade aos dados","tl.desc":"Cada etapa adicionou uma camada: negócio, análise, engenharia, automação.",
     "t1.p":"Início como Data Analyst | BI Specialist: dashboards, ETL e automações para pesquisas de mercado e viabilidade em 6 segmentos.",
     "t2.title":"Bacharelado em Ciências Contábeis","t2.p":"Faculdade Estácio de Sá de Goiás — a base de negócios, finanças e tomada de decisão que complementa a visão analítica.",
@@ -577,7 +587,7 @@ const i18n = {
     "s1.title":"BI &amp; Visualization","s1.desc":"Dashboards and semantic models that answer, not just decorate.","s1.i4":"Semantic Modeling",
     "s2.title":"Data &amp; Engineering","s2.desc":"ETL and modern architecture, from lakehouse to data warehouse.","s2.i7":"M Language",
     "s3.title":"Automation","s3.desc":"Workflows that eliminate manual tasks and connect tools.",
-    "projects.label":"04 — Projects","projects.title":"Selected work","projects.desc":"Real studies and solutions — from public dashboards to automation in production.",
+    "projects.label":"04 — Projects","projects.title":"Selected work","projects.desc":"Real studies and solutions — from public dashboards to automation in production.","projects.others":"Other projects",
     "p1.title":"Brazilian Chamber of Deputies Dashboard",
     "p1.desc":"Visual analysis of Brazilian Congress open data: spending, attendance and parliamentary activity, with indicators and storytelling for executive readability.",
     "p2.title":"Brasileirão 2025",
@@ -587,7 +597,7 @@ const i18n = {
     "p5.title":"Perfume Retail Lakehouse","p5.desc":"End-to-end Engineering → Data Science → App pipeline on Databricks, 100% as code with Databricks Asset Bundles (DABs).",
     "p6.title":"Weather Data Pipeline","p6.desc":"Collection, transformation and loading of weather data from the OpenWeather API with Python, Apache Airflow, Docker and PostgreSQL.",
     "p7.title":"Weather Data Warehouse with dbt","p7.desc":"Hourly Open-Meteo history stored as JSONB in PostgreSQL, transformed with dbt into a star schema — staging, intermediate and marts — and served to a Power BI dashboard covering overview, hourly profile and rainfall.","p7.link":"View dashboard",
-    "p.link":"View report","p.link2":"View report","p.link3":"View on GitHub","a11y.newtab":"(opens in a new tab)",
+    "p.link":"View report","p.link2":"View report","p.link3":"View on GitHub","a11y.newtab":"(opens in a new tab)","a11y.menu":"Open menu","a11y.close":"Close menu","a11y.top":"Back to top",
     "tl.label":"05 — Journey","tl.title":"From accounting to data","tl.desc":"Each step added a layer: business, analytics, engineering, automation.",
     "t1.p":"Started as Data Analyst | BI Specialist: dashboards, ETL and automation for market research and viability studies across 6 industries.",
     "t2.title":"Bachelor's in Accounting","t2.p":"Estácio de Sá de Goiás — the business, finance and decision-making foundation that complements the analytical view.",
@@ -612,7 +622,13 @@ function applyLang(l){
     const k = el.getAttribute('data-i18n');
     if(i18n[l][k] !== undefined) el.innerHTML = i18n[l][k];
   });
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    const on = b.dataset.lang === l;
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+  document.getElementById('topBtn').setAttribute('aria-label', i18n[l]['a11y.top']);
+  syncMenuBtn();
 }
 document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
 applyLang(lang);
@@ -632,10 +648,16 @@ const io = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 // ---- Menu mobile ----
+function syncMenuBtn(){
+  const btn = document.getElementById('hamb');
+  const open = document.getElementById('navLinks').classList.contains('open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  btn.setAttribute('aria-label', i18n[lang][open ? 'a11y.close' : 'a11y.menu']);
+}
 const hamb = document.getElementById('hamb');
 const navLinks = document.getElementById('navLinks');
-hamb.addEventListener('click', () => navLinks.classList.toggle('open'));
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+hamb.addEventListener('click', () => { navLinks.classList.toggle('open'); syncMenuBtn(); });
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { navLinks.classList.remove('open'); syncMenuBtn(); }));
 
 // ---- Voltar ao topo ----
 const topBtn = document.getElementById('topBtn');
