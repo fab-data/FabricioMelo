@@ -25,7 +25,9 @@
 <link rel="canonical" href="https://fab-data.github.io/FabricioMelo/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap"></noscript>
 <style>
 :root{
   --paper:#F8F7F3;
@@ -42,6 +44,7 @@
 html{scroll-behavior:smooth}
 body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:var(--brand);color:#fff}
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
 ::-webkit-scrollbar{width:10px}
 ::-webkit-scrollbar-track{background:var(--paper)}
 ::-webkit-scrollbar-thumb{background:#C9C4B8;border-radius:8px}
@@ -126,18 +129,28 @@ section{padding:90px 0;border-top:1px solid var(--line)}
 .stack-col li:hover{color:var(--ink);padding-left:8px}
 
 /* ---------- Projetos ---------- */
-.proj{border-top:1px solid var(--line);display:grid;grid-template-columns:56px 1fr auto;gap:20px;align-items:baseline;padding:30px 0;transition:background .25s}
+.proj{border-top:1px solid var(--line);display:grid;grid-template-columns:56px 1fr auto;gap:20px;align-items:start;padding:30px 0;transition:background .25s}
 .proj:last-child{border-bottom:1px solid var(--line)}
-.proj .idx{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.proj .idx{font-family:var(--mono);font-size:.8rem;color:var(--muted);padding-top:4px}
 .proj h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.25rem,2.6vw,1.6rem);transition:transform .3s,color .3s;display:inline-block}
 .proj:hover h3{transform:translateX(10px);color:var(--brand)}
 .proj p{font-size:.92rem;color:var(--muted);max-width:640px;margin-top:8px}
 .proj .tags-line{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-top:12px;letter-spacing:.3px}
-.proj .side{font-family:var(--mono);font-size:.76rem;letter-spacing:.4px;white-space:nowrap}
+.proj .side{font-family:var(--mono);font-size:.76rem;letter-spacing:.4px;white-space:nowrap;padding-top:4px}
 .proj a.side{color:var(--brand);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
 .proj a.side:hover{border-color:var(--brand)}
 .proj span.side{color:var(--muted)}
 .proj .links{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.proj-main{display:grid;grid-template-columns:220px 1fr;gap:26px;align-items:start;min-width:0}
+.proj-copy{min-width:0}
+.thumb{display:block;aspect-ratio:16/9;border:1px solid var(--line);background:#0E1116;overflow:hidden;text-decoration:none;transition:border-color .25s}
+.thumb img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.22,.61,.36,1)}
+a.thumb:hover{border-color:var(--brand)}
+a.thumb:hover img{transform:scale(1.04)}
+.thumb-ph{display:flex;flex-direction:column;justify-content:space-between;padding:12px 14px;
+  background:linear-gradient(150deg,rgba(0,59,106,.09),rgba(0,59,106,.02) 55%,transparent),repeating-linear-gradient(135deg,rgba(20,23,27,.05) 0 1px,transparent 1px 10px),var(--paper)}
+.thumb-ph b{font-family:var(--serif);font-weight:500;font-size:1.5rem;line-height:1;color:var(--brand)}
+.thumb-ph span{font-family:var(--mono);font-size:.58rem;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
 
 /* ---------- Outros projetos ---------- */
 .others{margin-top:34px;padding-top:22px;border-top:1px solid var(--line)}
@@ -206,6 +219,7 @@ footer b{color:var(--ink)}
   .meta-cell{padding:20px 18px 18px}
   .meta-cell:nth-child(3){border-left:none;padding-left:0}
   .meta-cell:nth-child(n+3){border-top:1px solid var(--line)}
+  .proj-main{grid-template-columns:180px 1fr;gap:20px}
 }
 @media (max-width:680px){
   .nav-links{position:fixed;inset:61px 0 auto 0;flex-direction:column;align-items:flex-start;background:var(--paper);padding:26px 24px;gap:18px;border-bottom:1px solid var(--line);transform:translateY(-130%);visibility:hidden;transition:transform .35s,visibility .35s}
@@ -213,6 +227,8 @@ footer b{color:var(--ink)}
   .hamb{display:block}
   .stack-grid,.courses ul{grid-template-columns:1fr}
   .proj{grid-template-columns:1fr;gap:8px}
+  .proj-main{grid-template-columns:1fr;gap:14px}
+  .thumb{max-width:340px}
   .proj .side{justify-self:start}
   .proj .links{justify-self:start;align-items:flex-start}
   .t-row{grid-template-columns:1fr;gap:6px}
@@ -359,55 +375,91 @@ footer b{color:var(--ink)}
 
   <article class="proj reveal d1">
     <span class="idx">01</span>
-    <div>
-      <h3 data-i18n="p1.title">Painel da Câmara dos Deputados</h3>
-      <p data-i18n="p1.desc">Análise visual de dados abertos da Câmara: gastos, presença e atuação parlamentar, com indicadores e storytelling para facilitar a interpretação executiva.</p>
-      <div class="tags-line">Power BI · DAX · Power Query · API REST</div>
+    <div class="proj-main">
+      <a class="thumb" href="https://app.powerbi.com/view?r=eyJrIjoiMmZlYzQwNzItNjI1ZS00YzQ0LWI2NjUtZTdjMTFhYzdjNmYxIiwidCI6ImYxYWNkMTNhLTdjMTctNGU3Mi05ZDY2LTJjNjlhMzE5ZDZkNiJ9" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+        <img src="assets/projetos/camara-deputados.jpg" alt="" width="960" height="540" loading="lazy" decoding="async">
+      </a>
+      <div class="proj-copy">
+        <h3 data-i18n="p1.title">Painel da Câmara dos Deputados</h3>
+        <p data-i18n="p1.desc">Análise visual de dados abertos da Câmara: gastos, presença e atuação parlamentar, com indicadores e storytelling para facilitar a interpretação executiva.</p>
+        <div class="tags-line">Power BI · DAX · Power Query · API REST</div>
+      </div>
     </div>
     <a class="side" href="https://app.powerbi.com/view?r=eyJrIjoiMmZlYzQwNzItNjI1ZS00YzQ0LWI2NjUtZTdjMTFhYzdjNmYxIiwidCI6ImYxYWNkMTNhLTdjMTctNGU3Mi05ZDY2LTJjNjlhMzE5ZDZkNiJ9" target="_blank" rel="noopener noreferrer"><span data-i18n="p.link">Ver relatório</span><span aria-hidden="true"> ↗</span><span class="sr-only" data-i18n="a11y.newtab">(abre em nova aba)</span></a>
   </article>
 
   <article class="proj reveal d1">
     <span class="idx">02</span>
-    <div>
-      <h3 data-i18n="p2.title">Brasileirão 2025</h3>
-      <p data-i18n="p2.desc">Análise interativa do Campeonato Brasileiro: classificação rodada a rodada, artilharia e aproveitamento — unindo coleta, modelagem e storytelling visual.</p>
-      <div class="tags-line">Power BI · Power Query · Storytelling</div>
+    <div class="proj-main">
+      <div class="thumb thumb-ph" aria-hidden="true"><b>02</b><span>Power BI</span></div>
+      <div class="proj-copy">
+        <h3 data-i18n="p2.title">Brasileirão 2025</h3>
+        <p data-i18n="p2.desc">Análise interativa do Campeonato Brasileiro: classificação rodada a rodada, artilharia e aproveitamento — unindo coleta, modelagem e storytelling visual.</p>
+        <div class="tags-line">Power BI · Power Query · Storytelling</div>
+      </div>
     </div>
     <a class="side" href="https://app.powerbi.com/view?r=eyJrIjoiM2E0MTgyMjMtODY0MS00ZGY4LWFlYzUtYWNmMDU1NmFjOTAxIiwidCI6ImYxYWNkMTNhLTdjMTctNGU3Mi05ZDY2LTJjNjlhMzE5ZDZkNiJ9" target="_blank" rel="noopener noreferrer"><span data-i18n="p.link2">Ver relatório</span><span aria-hidden="true"> ↗</span><span class="sr-only" data-i18n="a11y.newtab">(abre em nova aba)</span></a>
   </article>
 
   <article class="proj reveal d2">
     <span class="idx">03</span>
-    <div>
-      <h3 data-i18n="p5.title">Lakehouse de Perfumes</h3>
-      <p data-i18n="p5.desc">Pipeline completo de Engenharia → Ciência de Dados → App no Databricks, 100% como código com Databricks Asset Bundles (DABs).</p>
-      <div class="tags-line">Databricks · PySpark · Delta Lake · DABs · Lakehouse</div>
+    <div class="proj-main">
+      <a class="thumb" href="https://github.com/fab-data/LakehousePerfumes" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+        <img src="assets/projetos/lakehouse-perfumes.jpg" alt="" width="960" height="540" loading="lazy" decoding="async">
+      </a>
+      <div class="proj-copy">
+        <h3 data-i18n="p5.title">Lakehouse de Perfumes</h3>
+        <p data-i18n="p5.desc">Pipeline completo de Engenharia → Ciência de Dados → App no Databricks, 100% como código com Databricks Asset Bundles (DABs).</p>
+        <div class="tags-line">Databricks · PySpark · Delta Lake · DABs · Lakehouse</div>
+      </div>
     </div>
     <a class="side" href="https://github.com/fab-data/LakehousePerfumes" target="_blank" rel="noopener noreferrer"><span data-i18n="p.link3">Ver no GitHub</span><span aria-hidden="true"> ↗</span><span class="sr-only" data-i18n="a11y.newtab">(abre em nova aba)</span></a>
   </article>
 
   <article class="proj reveal d2">
     <span class="idx">04</span>
-    <div>
-      <h3 data-i18n="p6.title">Pipeline de Dados Climáticos</h3>
-      <p data-i18n="p6.desc">Coleta, transformação e carga de dados climáticos da OpenWeather API com Python, Apache Airflow, Docker e PostgreSQL.</p>
-      <div class="tags-line">Python · Apache Airflow · Docker · PostgreSQL · API REST</div>
+    <div class="proj-main">
+      <div class="thumb thumb-ph" aria-hidden="true"><b>04</b><span>Airflow</span></div>
+      <div class="proj-copy">
+        <h3 data-i18n="p6.title">Pipeline de Dados Climáticos</h3>
+        <p data-i18n="p6.desc">Coleta, transformação e carga de dados climáticos da OpenWeather API com Python, Apache Airflow, Docker e PostgreSQL.</p>
+        <div class="tags-line">Python · Apache Airflow · Docker · PostgreSQL · API REST</div>
+      </div>
     </div>
     <a class="side" href="https://github.com/fab-data/projeto_pipeline_weather" target="_blank" rel="noopener noreferrer"><span data-i18n="p.link3">Ver no GitHub</span><span aria-hidden="true"> ↗</span><span class="sr-only" data-i18n="a11y.newtab">(abre em nova aba)</span></a>
   </article>
 
   <article class="proj reveal d3">
     <span class="idx">05</span>
-    <div>
-      <h3 data-i18n="p7.title">Data Warehouse Climático com dbt</h3>
-      <p data-i18n="p7.desc">Histórico horário do Open-Meteo em JSONB no PostgreSQL, transformado com dbt em star schema — staging, intermediate e marts — e servido a um dashboard Power BI com visão geral, perfil horário e chuva.</p>
-      <div class="tags-line">Open-Meteo · PostgreSQL · dbt · Airflow · Power BI</div>
+    <div class="proj-main">
+      <a class="thumb" href="https://github.com/fab-data/projeto_weather_completo" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+        <img src="assets/projetos/weather-dbt.jpg" alt="" width="960" height="540" loading="lazy" decoding="async">
+      </a>
+      <div class="proj-copy">
+        <h3 data-i18n="p7.title">Data Warehouse Climático com dbt</h3>
+        <p data-i18n="p7.desc">Histórico horário do Open-Meteo em JSONB no PostgreSQL, transformado com dbt em star schema — staging, intermediate e marts — e servido a um dashboard Power BI com visão geral, perfil horário e chuva.</p>
+        <div class="tags-line">Open-Meteo · PostgreSQL · dbt · Airflow · Power BI</div>
+      </div>
     </div>
     <div class="links">
       <a class="side" href="https://app.powerbi.com/view?r=eyJrIjoiYjM0NjM1NDMtNzVlMS00Mjk0LWFhZmUtNWY3NzE5YjhkOWQxIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" target="_blank" rel="noopener noreferrer"><span data-i18n="p7.link">Ver dashboard</span><span aria-hidden="true"> ↗</span><span class="sr-only" data-i18n="a11y.newtab">(abre em nova aba)</span></a>
       <a class="side" href="https://github.com/fab-data/projeto_weather_completo" target="_blank" rel="noopener noreferrer"><span data-i18n="p.link3">Ver no GitHub</span><span aria-hidden="true"> ↗</span><span class="sr-only" data-i18n="a11y.newtab">(abre em nova aba)</span></a>
     </div>
+  </article>
+
+  <article class="proj reveal d3">
+    <span class="idx">06</span>
+    <div class="proj-main">
+      <a class="thumb" href="https://lnkd.in/dKxrhPKR" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+        <img src="assets/projetos/parkvision.jpg" alt="" width="960" height="540" loading="lazy" decoding="async">
+      </a>
+      <div class="proj-copy">
+        <h3 data-i18n="p8.title">ParkVision PRO — Dashboard 3D de Estacionamento</h3>
+        <p data-i18n="p8.desc">Protótipo de dashboard operacional para gestão de estacionamentos: visualização 3D isométrica das vagas, simulação animada de entradas e saídas, indicadores de ocupação e permanência, módulos financeiros e otimizações de renderização — tudo em HTML, CSS e JavaScript puro, direto no navegador.</p>
+        <div class="tags-line">HTML · CSS · JavaScript · 3D isométrico · Data Viz</div>
+      </div>
+    </div>
+    <a class="side" href="https://lnkd.in/dKxrhPKR" target="_blank" rel="noopener noreferrer"><span data-i18n="p8.link">Ver no LinkedIn</span><span aria-hidden="true"> ↗</span><span class="sr-only" data-i18n="a11y.newtab">(abre em nova aba)</span></a>
   </article>
 
   <div class="others reveal d3">
@@ -549,6 +601,7 @@ const i18n = {
     "p5.title":"Lakehouse de Perfumes","p5.desc":"Pipeline completo de Engenharia → Ciência de Dados → App no Databricks, 100% como código com Databricks Asset Bundles (DABs).",
     "p6.title":"Pipeline de Dados Climáticos","p6.desc":"Coleta, transformação e carga de dados climáticos da OpenWeather API com Python, Apache Airflow, Docker e PostgreSQL.",
     "p7.title":"Data Warehouse Climático com dbt","p7.desc":"Histórico horário do Open-Meteo em JSONB no PostgreSQL, transformado com dbt em star schema — staging, intermediate e marts — e servido a um dashboard Power BI com visão geral, perfil horário e chuva.","p7.link":"Ver dashboard",
+    "p8.title":"ParkVision PRO — Dashboard 3D de Estacionamento","p8.desc":"Protótipo de dashboard operacional para gestão de estacionamentos: visualização 3D isométrica das vagas, simulação animada de entradas e saídas, indicadores de ocupação e permanência, módulos financeiros e otimizações de renderização — tudo em HTML, CSS e JavaScript puro, direto no navegador.","p8.link":"Ver no LinkedIn",
     "p.link":"Ver relatório","p.link2":"Ver relatório","p.link3":"Ver no GitHub","a11y.newtab":"(abre em nova aba)","a11y.menu":"Abrir menu","a11y.close":"Fechar menu","a11y.top":"Voltar ao topo",
     "tl.label":"05 — Trajetória","tl.title":"Da contabilidade aos dados","tl.desc":"Cada etapa adicionou uma camada: negócio, análise, engenharia, automação.",
     "t1.p":"Início como Data Analyst | BI Specialist: dashboards, ETL e automações para pesquisas de mercado e viabilidade em 6 segmentos.",
@@ -597,6 +650,7 @@ const i18n = {
     "p5.title":"Perfume Retail Lakehouse","p5.desc":"End-to-end Engineering → Data Science → App pipeline on Databricks, 100% as code with Databricks Asset Bundles (DABs).",
     "p6.title":"Weather Data Pipeline","p6.desc":"Collection, transformation and loading of weather data from the OpenWeather API with Python, Apache Airflow, Docker and PostgreSQL.",
     "p7.title":"Weather Data Warehouse with dbt","p7.desc":"Hourly Open-Meteo history stored as JSONB in PostgreSQL, transformed with dbt into a star schema — staging, intermediate and marts — and served to a Power BI dashboard covering overview, hourly profile and rainfall.","p7.link":"View dashboard",
+    "p8.title":"ParkVision PRO — 3D Parking Dashboard","p8.desc":"Operational dashboard prototype for parking management: isometric 3D view of spaces, animated entry and exit simulation, occupancy and dwell-time KPIs, financial modules and rendering optimizations — all in pure HTML, CSS and JavaScript, right in the browser.","p8.link":"View on LinkedIn",
     "p.link":"View report","p.link2":"View report","p.link3":"View on GitHub","a11y.newtab":"(opens in a new tab)","a11y.menu":"Open menu","a11y.close":"Close menu","a11y.top":"Back to top",
     "tl.label":"05 — Journey","tl.title":"From accounting to data","tl.desc":"Each step added a layer: business, analytics, engineering, automation.",
     "t1.p":"Started as Data Analyst | BI Specialist: dashboards, ETL and automation for market research and viability studies across 6 industries.",
